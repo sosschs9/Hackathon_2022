@@ -5,7 +5,25 @@
     <title>Title</title>
 </head>
 <body>
-hello
-{{ name }}
+<!-- {"route": i["route"], "bus_id": i["bus_id"], "max_num": i["max_num"], "available": count_result,
+                 "seat_state": bin(avail_result), 'time': return_remain_time(i)}) -->
+
+    {% for bus_item in bus_list %}
+        <a href="/">
+        {{ bus_item['route'] }}
+        (
+        {{ bus_item['bus_id'] }}
+        )
+        {{ bus_item['available'] }}
+        / {{ bus_item['max_num'] }}
+        {{ bus_item['time'] }}
+        </a>
+        </br>
+    {% endfor %}
+    <form method="POST" action="/bus_seat">
+        버스 아이디를 입력해주세요.
+        <input type="text" name="bus_id" id="bus_id">
+        <button type="submit">좌석 선택하기</button>
+    </form>
 </body>
 </html>

@@ -42,51 +42,92 @@
         </div>
     </header>
 
-        {% for data in busdata %}
-        {% for key, value in data.items() %}
-        {{ key }} {{ value }}
-        {% endfor %}
-        {% endfor %}
-
     <section class="py-5">
         <div class="container px-4 px-lg-5">
+            <strong>예약 1번 정방향</strong></br>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for bus_item in bus_list %}
+                    {% if bus_item['route'] == '예약1' %}
+                        {% if bus_item['forward'] == 1 %}
+                            {% for item in bus_item['BS_list'] %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
 
-                    <strong>예약 버스 1번 노선</strong>
-                    <ul>
-                        <li>
-                            봉무청구새들마을건너 -> 불로봉무파출소","위남마을","봉무초등학교건너","이시아폴리스더샵1단지","봉무공원건너","대구섬유박물관","불로동고분군건너","불로전통시장건너","불로화훼단지건너","불로삼거리","대구국제공항건너","공항시장건너","지저동행정복지센터건너","아양교3","아양교역(1번출구)","동구청앞","동구청역(4번출구)","산림조합중앙회건너","동대구역지하도1","동대구맨션","평화시장(닭똥집골목)앞","공고네거리1","강남약국건너","농협중앙회앞","칠성시장앞1"
-                            425 : 동인치안센터건너","CGV대구한일건너","곽병원앞1","섬유회관건너1","큰장네거리1","대구제일고등학교건너","달서교회건너","KT서대구지사앞","서구청앞","신평리네거리2","평리청구타운앞","내당삼익맨션앞","두류역(달성고등학교앞)","감삼네거리1","서남시장앞1","구병원건너","죽전네거리2"
-                            527: 죽전네거리2","용산네거리2","우방죽전타운앞1","용산1동행정복지센터앞","용산종합큰시장앞","2차서한화성타운앞","용산2동행정복지센터건너","성서청구타운앞","영남우방타운1차건너","조달청건너","동서화성타운앞","국민연금네거리1","성서우방타운앞","보성화성타운앞","와룡시장앞","성서종합시장건너","계명대학교동문앞","계명대역(1번출구)","계명대학교정문앞","계명대학교동산병원앞","강창역(1번출구)","삼성명가타운건너","강창교2","대실역청아람앞","대실역(1번출구)","다사고등학교앞","매곡사거리1","다사읍행정복지센터앞"
-                        </li>
-                    </ul>
-
+            <strong>예약 1번 역방향</strong></br>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for bus_item in bus_list %}
+                    {% if bus_item['route'] == '예약1' %}
+                        {% if bus_item['forward'] == 0 %}
+                            {% for item in bus_item['BS_list'] %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>
 
     <section class="py-5">
         <div class="container px-4 px-lg-5">
+            <strong>예약 2번 정방향</strong></br>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for bus_item in bus_list %}
+                    {% if bus_item['route'] == '예약2' %}
+                        {% if bus_item['forward'] == 1 %}
+                            {% for item in bus_item['BS_list'] %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
 
-                    <strong>예약 버스 2번 노선</strong>
-                    <ul>
-                        <li>여기</li>
-                        <li>저기</li>
-                    </ul>
-
+            <strong>예약 2번 역방향</strong></br>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for bus_item in bus_list %}
+                    {% if bus_item['route'] == '예약2' %}
+                        {% if bus_item['forward'] == 0 %}
+                            {% for item in bus_item['BS_list'] %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>
 
     <section class="py-5">
         <div class="container px-4 px-lg-5">
+            <strong>예약 3번 정방향</strong></br>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for bus_item in bus_list %}
+                    {% if bus_item['route'] == '예약3' %}
+                        {% if bus_item['forward'] == 1 %}
+                            {% for item in bus_item['BS_list'] %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
 
-                    <strong>예약 버스 3번 노선</strong>
-                    <ul>
-                        <li>뭐시기</li>
-                    </ul>
+            <strong>예약 3번 역방향</strong></br>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for bus_item in bus_list %}
+                    {% if bus_item['route'] == '예약3' %}
+                        {% if bus_item['forward'] == 0 %}
+                            {% for item in bus_item['BS_list'] %}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -95,17 +136,27 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <form method="POST" action="/bus_watch" autocomplete="off">
-                    버스 노선
-                    <select name="busname" id="busname">
+                    <strong>버스 노선</strong>
+                    <select name="bus_name" id="bus_name">
                         <option value=""></option>
-                        <option value="no1">예약버스 1번</option>
-                        <option value="no2">예약버스 2번</option>
-                        <option value="no3">예약버스 3번</option>
+                        <option value="예약1">예약1</option>
+                        <option value="예약2">예약2</option>
+                        <option value="예약3">예약3</option>
                     </select>
-                    출발지
-                    <input type="text" name="startStaion" id="startStaion"></br>
-                    도착지
+                    </br>
+                    <strong>방향</strong>
+                    <select name="forward" id="forward">
+                        <option value=""></option>
+                        <option value="1">정방향</option>
+                        <option value="0">역방향</option>
+                    </select>
+                    </br>
+                    <strong>출발지</strong>
+                    <input type="text" name="startStation" id="startStation">
+                    </br>
+                    <strong>도착지</strong>
                     <input type="text" name="endStation" id="endStation">
+                    </br>
                     <button type="submit">버스 확인하기</button>
                 </form>
             </div>

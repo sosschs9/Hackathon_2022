@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test용입니다.</title>
+</head>
+<body>
+<div>
+    <form method="post">{% csrf_token %}</form>
+    <input type="text" name="token">
+    <input type="submit" value="Send message">
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+/* Rectangle 1 */
+.ex1{
+   display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #8a8;
+
+}
+
+
+/* Rectangle 2 */
+.ex2{
+width: 875px;
+height: 440px;
+left: 400px;
+top: 522px;
+
+background: #000000;
+border-radius: 20px;
+
+}
+

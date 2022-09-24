@@ -23,8 +23,11 @@ def bus_watch():
 @app.route('/bus_station', methods=['POST'])
 def bus_station():
     data = requests.get("http://localhost:8080/station/search/" + request.form['bus_station'])
-    busdata = data.json()
-    return render_template('bus_station.html', data=busdata)
+    return render_template('bus_station.html', data=data)
+
+@app.route('/bus_seat')
+def bus_seat():
+    return render_template('bus_seat.html')
 
 if __name__ == '__main__':
     app.run()

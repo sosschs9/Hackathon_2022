@@ -95,8 +95,18 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <form method="POST" action="/bus_watch" autocomplete="off">
-                    <input type="text" name="busname" id="busname">
-                    <button type="submit">데이터 전송</button>
+                    버스 노선
+                    <select name="busname" id="busname">
+                        <option value=""></option>
+                        <option value="no1">예약버스 1번</option>
+                        <option value="no2">예약버스 2번</option>
+                        <option value="no3">예약버스 3번</option>
+                    </select>
+                    출발지
+                    <input type="text" name="startStaion" id="startStaion"></br>
+                    도착지
+                    <input type="text" name="endStation" id="endStation">
+                    <button type="submit">버스 확인하기</button>
                 </form>
             </div>
         </div>

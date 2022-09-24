@@ -10,6 +10,7 @@ col_info = db.reserveBus_info       # 예약버스 정보
 col_bus = db.bus_state      # 현재 버스 상태
 col_reserve = db.reservation    # 예약 내역
 
+# 모든 예약버스 노선의 정류장 반환
 def return_all_route_list() :
     res = []
     search = col_info.find({'type':'route'})
@@ -18,6 +19,7 @@ def return_all_route_list() :
     
     return res
 
+# 유효한 시간인지 확인
 def check_date(element):
     today = datetime.now()
     if(element["year"] < today.year) :
@@ -40,6 +42,7 @@ def check_date(element):
         return False
     return True
 
+# 도착까지 남은 시간(1시간 이내), 도착 정보 반환
 def return_remain_time(element):
     today = datetime.now()
     # print(element)
@@ -56,7 +59,7 @@ def return_remain_time(element):
     else:
         return str_time
 
-
+# 예약 취소
 def cancle_reserve(reserve_id):
     res = col_reserve.find_one({'_id':reserve_id})
     res['reserve_vaild'] = False
@@ -80,6 +83,7 @@ def cancle_reserve(reserve_id):
             break
         BS_find = search["BS_off"]
 
+# 예약하기
 def reserve_seat(user_id, user_pw, bus_id, BS_on, BS_off, seat) :
     BS_find = BS_on
     seat_num = ~(1<<(seat-1))
@@ -102,6 +106,7 @@ def reserve_seat(user_id, user_pw, bus_id, BS_on, BS_off, seat) :
             break
         BS_find = search["BS_off"]
 
+# 해당 버스에서 예약가능한 좌석 알아내기
 def count_avail(bus_id, BS_on, BS_off, max) :
     BS_find = BS_on
     avail = (1 << max) - 1
@@ -123,7 +128,7 @@ def count_avail(bus_id, BS_on, BS_off, max) :
 
     return avail, count
 
-
+# 버스노선, 방향, 타는/내리는 정류장 -> 버스 목록 찾기
 def search_bus(route, forward, BS_on, BS_off) :
     result = []
     search = col_bus.find({"route":route, "BS_on":BS_on, "forward":forward})

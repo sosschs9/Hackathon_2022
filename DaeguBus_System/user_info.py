@@ -21,8 +21,8 @@ def check_user_pw(user_id, password):
     아이디와 패스워드가 일치하는지 확인
     """
     check = col_user.find({"_id":user_id})["password"]
-    if (check == password): return True, True
-    else: return False, False
+    if (check == password): return True
+    else: return False
 
 def return_user_type(user_id):
     """

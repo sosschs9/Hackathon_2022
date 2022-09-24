@@ -8,12 +8,12 @@ db = client.deagu_bus
 col_user = db.user_info
 
 # Create your models here.
-class User(models.Model):
+class User_db(models.Model):
     NATIONAL_CHOICES = (
         ('NP', 'Nomal person'),
         ('WP','Weak person'),
     )
-    name = models.CharField(max_length=200)
+    username = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
     type = models.CharField(max_length=2, choices=NATIONAL_CHOICES)
 

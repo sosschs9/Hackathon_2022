@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>달려라, 달구벌</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme css (includes Bootstrap)-->
+         <link rel="stylesheet" href="../../../../static/css/styles.css">
+
+
+
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#">달려라, 달구벌</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/main">버스정보조회</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/reser">버스선택</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/help">도움말</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/join">회원가입</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/out">탈퇴하기</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/reser/normal/normal_list/search/bus_watch/bus_reser/check/reser_list">예약내역조회</a></li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <a href="/main/login">Login</a>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">달려라, 달구벌</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">버스 예약 시스템</p>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <div style = "overflow:hidden">
+
+ <section class="list-wrap">
+
+
+
+
+
+
+
+  <input type="text" id="search-text" placeholder="search" class="search-box">
+    <span class="list-count"></span>
+{% for i in list %}
+<ul id="list">
+  <li class="in">Apple pie</li>
+  <li class="in">Pumpkin pie</li>
+  <li class="in">Banana-creme pie</li>
+  <li class="in">Peach-blackberry cobbler</li>
+  <li class="in">Chocolate-strawberry torte</li>
+  <li class="in">Chocolate-zucchini cake</li>
+  <li class="in">Anything involving chocolate and mint</li>
+  <li class="in">Red-velvet cake</li>
+  <li class="in">Anything involving fruits that aren't cherries</li>
+  <span class="empty-item">no results</span>
+</ul>
+   </section>
+
+<button type="submit"> <a href="/main/reser/normal/normal_list"> 확인하기 </a></button>
+</div>
+
+
+<script>
+ $(document).ready(function() {
+
+  var jobCount = $('#list .in').length;
+  $('.list-count').text(jobCount + ' items');
+
+
+  $("#search-text").keyup(function () {
+     //$(this).addClass('hidden');
+
+    var searchTerm = $("#search-text").val();
+    var listItem = $('#list').children('li');
+
+
+    var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+
+      //extends :contains to be case insensitive
+  $.extend($.expr[':'], {
+  'containsi': function(elem, i, match, array)
+  {
+    return (elem.textContent || elem.innerText || '').toLowerCase()
+    .indexOf((match[3] || "").toLowerCase()) >= 0;
+  }
+});
+
+
+    $("#list li").not(":containsi('" + searchSplit + "')").each(function(e)   {
+      $(this).addClass('hiding out').removeClass('in');
+      setTimeout(function() {
+          $('.out').addClass('hidden');
+        }, 300);
+    });
+
+    $("#list li:containsi('" + searchSplit + "')").each(function(e) {
+      $(this).removeClass('hidden out').addClass('in');
+      setTimeout(function() {
+          $('.in').removeClass('hiding');
+        }, 1);
+    });
+
+
+      var jobCount = $('#list .in').length;
+    $('.list-count').text(jobCount + ' items');
+
+    //shows empty state text when no jobs found
+    if(jobCount == '0') {
+      $('#list').addClass('empty');
+    }
+    else {
+      $('#list').removeClass('empty');
+    }
+
+  });
+
+});
+
+</script>
+
+    </body>
+</html>

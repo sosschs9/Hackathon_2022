@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>달려라, 달구벌</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme css (includes Bootstrap)-->
+         <link rel="stylesheet" href="../../../../static/css/styles.css">
+
+         <style>
+         .searchBox{
+         margin: 20px 0;
+         }
+
+         .listBox {
+         max-width: 500px;
+         }
+
+         .listInner{
+         background-color: #dedede;
+         margin: 10px 5px;
+         padding: 4px;
+         }
+
+         .busnumber {
+         font-weight: bold;
+         }
+     </style>
+
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#">달려라, 달구벌</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/main">버스정보조회</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/reser">버스선택</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/help">도움말</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/join">회원가입</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/out">탈퇴하기</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/main/reser/normal/normal_list/search/bus_watch/bus_reser/check/reser_list">예약내역조회</a></li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <a href="/main/login">Login</a>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+              <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">달려라, 달구벌</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">버스 예약 시스템</p>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <div style = "overflow:hidden">
+<h1>저상버스 예약 좌석 페이지 입니다.</h1>
+<p>원하는 버스 노선을 검색합니다. 저상버스에 해당하는 노선만 쭈르르 보여주고 검색할 수 있도록 합니다.</p>
+
+
+     <div class="searchBox">
+         <label>Bus: <input type="text" id="search" onkeyup="filter()" placeholder="원하는 버스 번호를 검색하세요."></label>
+     </div>
+
+            <div class="listInner">
+                <span class="busnumber">{{ document.write(country) }}</span>
+            </div>
+            <a href="/main/reser/unnormal/unnormal_list">확인하기</a>
+<p>선택을 한 버스의 노선을 쭈르르 보여주고 이걸 최종 선택할 수 있는 페이지로 넘어가야 함.</p>
+        </div>
+
+    <script>
+      function filter() {
+        let search = document.getElementById("search").value.toLowerCase();
+        let listInner = document.getElementsByClassName("listInner");
+
+        for (let i = 0; i < listInner.length; i++) {
+          country = listInner[i].getElementsByClassName("busnumber");
+          if (
+            country[0].innerHTML.toLowerCase().indexOf(search) != -1
+          ) {
+            listInner[i].style.display = "flex"
+          } else {
+            listInner[i].style.display = "none"
+          }
+        }
+      }
+
+    </script>
+    </body>
+</html>

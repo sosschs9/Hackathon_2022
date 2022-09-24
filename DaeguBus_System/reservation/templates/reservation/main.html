@@ -21,17 +21,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">버스정보조회</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/main/reser">버스선택</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">설정</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/main/help">도움말</a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="join/">회원가입</a></li>
-                            <li><a class="dropdown-item" href="out/">탈퇴하기</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'reservation:main' %}">버스정보조회</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'reservation:ReserveSeat' %}">버스선택</a></li> 
                 </ul>
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="submit" href="login/">
@@ -57,10 +48,24 @@
             </div>
         </div>
     </header>
-    </div>
-    
-    <div id="content-wrap">
-        
+
+    <section class="py-5">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="card h-100 mx-5 my-5">
+                    <form method="post" class="post-form"> 
+                        {% csrf_token %}
+                        <div class="form-group">
+                        <p>버스 정류장을 입력해주세요</p>
+                        <input type="text" id="bus_station" name="bus_station">
+                        </div>
+                        <button type="submit" class="btn btn-primary">버스 정보 조회하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     </div>
 
     <footer class="py-5 bg-dark">

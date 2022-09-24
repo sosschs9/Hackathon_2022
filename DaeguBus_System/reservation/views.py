@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from django.views import View
 import user_info
 
-from .forms import UserForm
-from .models import User_db
+from .forms import UserForm, BusResrveForm
+from .models import ReserveBus, User_db
 
 # Create your views here.
 def index(request):
@@ -26,7 +26,18 @@ def CreatUser(request):
     else:
         form = UserForm()
     return render(request, 'reservation/join.html', {'form': form})
-        
 
-        
 
+def BusWatch(request):
+    """
+    예약 버스 확인
+    """
+    if request.method == 'POST':
+        form = BusResrveForm(request.POST)
+
+        if form.is_valid():
+            busname = form.busname
+            return render(request, 'reservation/bus_watch.html', busname)
+    else:
+        form = BusResrveForm()
+    return render(request, 'reservation/reserve.html')

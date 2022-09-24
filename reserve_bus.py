@@ -18,7 +18,7 @@ def return_all_route_list() :
         res.append({'route':i['route'], 'forward':i['forward'], 'BS_list':i['BS_list']})
     
     return res
-
+            
 # 유효한 시간인지 확인
 def check_date(element):
     today = datetime.now()
@@ -42,6 +42,13 @@ def check_date(element):
         return False
     return True
 
+# 예약내역 불러오기
+def return_reservation(user_id, user_pw):
+    search = col_reserve.find({'user_id':user_id, 'user_pw':user_pw})
+    for i in search:
+        if(~check_date(i)):
+            i['reserve_vaild'] = False
+
 # 도착까지 남은 시간(1시간 이내), 도착 정보 반환
 def return_remain_time(element):
     today = datetime.now()
@@ -58,6 +65,19 @@ def return_remain_time(element):
         return str(gap)+"분("+str_time+")"
     else:
         return str_time
+    
+# 예약내역 불러오기
+def return_reservation(user_id, user_pw):
+    search = col_reserve.find({'user_id':user_id, 'user_pw':user_pw})
+    result = []
+    for i in search:
+        if(~check_date(i)):
+            i['reserve_vaild'] = False
+            col_reserve.delete_one({'_id':i['_id']})
+            col_reserve.insert_one(i)
+        if(i['reserve_vaild']):
+            result.append(i)
+    return result
 
 # 예약 취소
 def cancle_reserve(reserve_id):

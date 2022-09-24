@@ -20,7 +20,7 @@ def delete_pre_reserve():
         col_state.delete_many({'hour':i})
 
 def insert_next_reserve():
-    tomorrow = datetime.now() + timedelta(days=1)
+    tomorrow = datetime.now() #+ timedelta(days=1)
     bus_route_list = col_info.find({'type':'route'})
 
     search = col_state.find({'year':tomorrow.year, 'month':tomorrow.month, 'day':tomorrow.day})
@@ -31,7 +31,7 @@ def insert_next_reserve():
     for r in bus_route_list:
         pre_BS = None
         i = 0
-        while i != len(r['BS_list'][i]) - 1:
+        while i != len(r['BS_list']) - 1:
             bus_route = col_info.find({'type':'bus', 'route':r['route'], 'forward':r['forward'], 'BS_name':r['BS_list'][i]})
             for b in bus_route:
                 element = {'route':r['route'], 'forward':b['forward'], 'bus_id':b['bus_id'],
@@ -46,7 +46,7 @@ def insert_next_reserve():
             i += 1
     # print(bin(avail_init))
 
-# if __name__ == "__main__":
-#     # col_state.delete_many({})
-#     delete_pre_reserve()
-#     insert_next_reserve()
+if __name__ == "__main__":
+    col_state.delete_many({})
+    # delete_pre_reserve()
+    insert_next_reserve()

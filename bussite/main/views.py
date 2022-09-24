@@ -60,10 +60,10 @@ def unnormalwatch(request):
 def unnormalcheck(request):
     return render(request, 'unnormal_check.html')
 
-class FormView(generic.View):
-    template_name = 'templates/test.html'
-    result = keyword.keywordFindAPI(inputkw)
-    context = {
-        'result' : result
-    }
-    return render(request, self.template_name, context)
+#class FormView(generic.View):
+ #   template_name = 'templates/test.html'
+  #  result = keyword.keywordFindAPI(inputkw)
+   # context = {
+    #    'result' : result
+    #}
+    #return render(request, self.template_name, context)

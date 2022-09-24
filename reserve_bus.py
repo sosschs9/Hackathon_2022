@@ -157,6 +157,18 @@ def count_avail(bus_id, BS_on, BS_off, max):
 
     return avail, count
 
+#bus_id와 출발/도착 정류장 -> 좌석 현황 리스트
+def return_seat_status(bus_id, BS_on, BS_off):
+    avail_result, count_result = count_avail(bus_id, BS_on, BS_off, 26)
+    avail_list = []
+    for j in range(0, 26):
+        if(avail_result & (1 << j)):
+            avail_list.append(True)
+        else :
+            avail_list.append(False)
+
+    return avail_list
+
 
 # 버스노선, 방향, 타는/내리는 정류장 -> 버스 목록 찾기
 def search_bus(route, forward, BS_on, BS_off):

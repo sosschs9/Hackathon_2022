@@ -172,3 +172,5 @@ https://youtu.be/JtuXjqsvJPQ
 4. 전체 내역 확인
 5. 확인 후 기사님께 전송하는 '예약하기' 버튼 누르기
 6. 기사님께 전송 완료
+
+(hyegoooong, jaehyun branch 참고)

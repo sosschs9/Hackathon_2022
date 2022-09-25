@@ -1,24 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>달려라 달구벌</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../static/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="../static/assets/css/noscript.css" /></noscript>
 </head>
-<body>
-<h3>회원 예약 정보 출력</h3>
-{{ user_id }}님의 예약정보입니다. </br>
-{% for data in reservation_list %}
-    {{ data['route'] }} </br>
-    {{ data['bus_id'] }} </br>
-    {{ data['BS_on'] }} </br>
-    {{ data['BS_off'] }} </br>
-    {{ data['seat'] }} </br>
-    {{ data['year'] }}-{{ data['month'] }}-{{ data['day'] }} {{ data['hour'] }}:{{ data['min'] }}
-{% endfor %}
+<body class="is-preload">
+    <div id="wrapper">
+      <!-- Header -->
+       <header id="header" class="alt">
+          <a href="main.html" class="logo"><strong> 달려라 달구벌 </strong> <span>by 밥친구들</span></a>
+          <nav>
+             <a href="#menu">Menu</a>
+          </nav>
+       </header>
 
-<form method="post" action="/delete_reservation">
+          <!-- Menu -->
+        <nav id="menu">
+          <ul class="links">
+             <li><a href="/">Home</a></li>
+             <li><a href="/reserve">버스 정보 조회</a></li>
+             <li><a href="generic.html">예약버스 예약</a></li>
+             <li><a href="elements.html">저상버스 예약</a></li>
+          </ul>
+          <ul class="actions stacked">
+             <li><a href="/view_reservation" class="button primary fit">예약 조회</a></li>
+             <li><a href="#" class="button fit">도움말</a></li>
+          </ul>
+        </nav>
 
-</form>
+        <!-- Main -->
+        <div id="main" class="alt">
+            <!-- One -->
+            <section id="one">
+                <div class="inner">
+                    <header class="major">
+                        <h1>회원 예약 정보</h1>
+                    </header>
+                    <p>{{ user_id }}님의 예약정보입니다. </p>
+                    <section>
+                        {% for data in reservation_list %}
+                        <div class="col-4 col-12-medium">
+                            <h3>버스 노선</h3>
+                            <p>{{ data['route'] }}</p>
+                        </div>
+                        <div class="col-4 col-12-medium">
+                            <h3>버스 ID</h3>
+                            <p>{{ data['bus_id'] }}</p>
+                        </div>
+                        <div class="col-4 col-12-medium">
+                            <h3>출발 정류장</h3>
+                            <p>{{ data['BS_on'] }}</p>
+                        </div>
+                        <div class="col-4 col-12-medium">
+                            <h3>도착 정류장</h3>
+                            <p>{{ data['BS_off'] }}</p>
+                        </div>
+                        <div class="col-4 col-12-medium">
+                            <h3>버스 좌석</h3>
+                            <p>{{ data['seat'] }}</p>
+                        </div>
+                        <div class="col-4 col-12-medium">
+                            <h3>예약 날짜</h3>
+                            <p>{{ data['year'] }}-{{ data['month'] }}-{{ data['day'] }} {{ data['hour'] }}:{{ data['min'] }}</p>
+                        </div>
+                        {% endfor %}
+                    </section>
 
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <div class="inner">
+                    <ul class="icons">
+                        <li><a href="https://github.com/sosschs9/Hackathon_2022" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                    </ul>
+                    <ul class="copyright">
+                        <li>&copy; 밥친구들</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+<!-- Scripts -->
+    <script src="../static/assets/js/jquery.min.js"></script>
+    <script src="../static/assets/js/jquery.scrolly.min.js"></script>
+    <script src="../static/assets/js/jquery.scrollex.min.js"></script>
+    <script src="../static/assets/js/browser.min.js"></script>
+    <script src="../static/assets/js/breakpoints.min.js"></script>
+    <script src="../static/assets/js/util.js"></script>
+    <script src="../static/assets/js/main.js"></script>
 </body>
 </html>

@@ -1,32 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<!-- {"route": i["route"], "bus_id": i["bus_id"], "max_num": i["max_num"], "available": count_result,
-                 "seat_state": bin(avail_result), 'time': return_remain_time(i)}) -->
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>달려라 달구벌</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../static/assets/css/noscript.css" /></noscript>
+	</head>
+<body class="is-preload">
+    <div id="wrapper">
+      <!-- Header -->
+       <header id="header" class="alt">
+          <a href="/" class="logo"><strong> 달려라 달구벌 </strong> <span>by 밥친구들</span></a>
+          <nav>
+             <a href="/">Menu</a>
+          </nav>
+       </header>
 
-    {% for bus_item in bus_list %}
-        {{ bus_item['route'] }}
-        (
-        {{ bus_item['bus_id'] }}
-        )
-        {{ bus_item['available'] }}
-        / {{ bus_item['max_num'] }}
-        {{ bus_item['time'] }}
-        </br>
-    {% endfor %}
+  <!-- Banner -->
+    <!-- Note: The "styleN" class below should match that of the header element. -->
+        <section id="banner" class="style2">
+            <div class="inner">
+                <span class="image">
+                    <img src="../static/images/pic02.jpg" alt="" />
+                </span>
+                <header class="major">
+                    <h1>버스 예약 시스템</h1>
+                </header>
+                <div class="content">
+                    <p>버스 조회 및 선택</p>
+                </div>
+            </div>
+        </section>
 
-    <form method="POST" action="/bus_seat">
-        버스 아이디를 입력해주세요.
-        <select name="bus_id" id="bus_id">
-            {% for bus_item in bus_list %}
-            <option value="{{ bus_item['bus_id'] }}">{{ bus_item['bus_id'] }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">좌석 선택하기</button>
-    </form>
+        <!-- Main -->
+        <div id="main" class="alt">
+            <section id="one">
+                <div class="inner">
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>노선(버스번호)</th>
+                                        <th>좌석현황</th>
+                                        <th>도착 예정 시간</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for bus_item in bus_list %}
+                                    <tr>
+                                        <td>{{ bus_item['route'] }} ( {{ bus_item['bus_id'] }} )</td>
+                                        <td>{{ bus_item['available'] }} / {{ bus_item['max_num'] }}</td>
+                                        <td> {{ bus_item['time'] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        </br>
+                        <h2>버스 선택</h2>
+                        <form method="post" action="/bus_seat">
+                            <div class="fields">
+                                <div class="field half">
+                                    <!-- 버스 번호 선택하는거 -->
+                                    <select name="bus_id" id="bus_id">
+                                        {% for bus_item in bus_list %}
+                                        <option value="{{ bus_item['bus_id'] }}">{{ bus_item['bus_id'] }}</option>
+                                        {% endfor %}
+                                    </select><br/>
+                                </div>
+                                <div class="field half">
+                                    <button type="submit" class="button">좌석 선택하기</button>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+            </section>
+
+
+            <!-- Footer -->
+            <footer id="footer">
+                <div class="inner">
+                    <ul class="icons">
+                        <li><a href="https://github.com/sosschs9/Hackathon_2022" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                    </ul>
+                    <ul class="copyright">
+                        <li>&copy; 밥친구들</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </div>
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
 </body>
 </html>

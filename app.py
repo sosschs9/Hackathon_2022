@@ -14,7 +14,7 @@ def select():
     return render_template("select.html")    
 
 # 버스 정류장 입력 -> 버스 정보 조회 기능
-@app.route('/station')
+@app.route('/bus_station', methods=['POST'])
 def bus_station():
     data = requests.get("http://localhost:8080/station/search/" + request.form['bus_station']).text
     data=json.loads(data)

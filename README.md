@@ -154,7 +154,7 @@ pip install -r requirements
 
 ## 9. 시연 영상
 https://youtu.be/JtuXjqsvJPQ
-https://youtu.be/5CCMImybZ1A
+https://youtu.be/fFwKoqUyHWw
 
 <타임 스탬프>
 (mongoDB Atlas - 7번 참조)

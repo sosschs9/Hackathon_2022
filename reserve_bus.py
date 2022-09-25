@@ -24,23 +24,23 @@ def return_all_route_list():
 # 유효한 시간인지 확인
 def check_date(element):
     today = datetime.now()
-    if (element["year"] < today.year):
+    if (element["year"] < 2000+int(today.strftime('%y'))):
         return False
-    if (element['year'] > today.year):
+    if (element['year'] > 2000+int(today.strftime('%y'))):
         return True
-    if (element['month'] < today.month):
+    if (element['month'] < int(today.strftime('%m'))):
         return False
-    if (element['month'] > today.month):
+    if (element['month'] > int(today.strftime('%m'))):
         return True
-    if (element['day'] < today.day):
+    if (element['day'] < int(today.strftime('%d'))):
         return False
-    if (element['day'] > today.day):
+    if (element['day'] > int(today.strftime('%d'))):
         return True
-    if (element['hour'] < today.hour):
+    if (element['hour'] < int(today.strftime('%H'))):
         return False
-    if (element['hour'] > today.hour):
+    if (element['hour'] > int(today.strftime('%H'))):
         return True
-    if (element['min'] < int(today.strftime('%M'))):
+    if (element['min'] > int(today.strftime('%M'))):
         return False
     return True
 
@@ -48,15 +48,19 @@ def check_date(element):
 # 예약내역 불러오기
 def return_reservation(user_id, user_pw):
     result = []
+    flag = False
     search = col_reserve.find({'user_id': user_id, 'user_pw': user_pw})
     for i in search:
-        if (~check_date(i)):
+        flag = True
+        if (check_date(i) == False):
             i['reserve_vaild'] = False
             col_reserve.delete_one({'_id': i['_id']})
             col_reserve.insert_one(i)
-        if (i['reserve_vaild']):
-            result.append(i)
-    return result
+        result.append(i)
+    
+    if(flag):
+        return result
+    return False
 
 # DB doc -> 도착까지 남은 시간(1시간 이내), 도착 정보 반환
 def return_remain_time(element):

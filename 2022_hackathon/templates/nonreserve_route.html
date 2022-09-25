@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>달려라, 달구벌</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme css (includes Bootstrap)-->
+    <link rel="stylesheet" href="../../static/styles.css">
+    <style>
+        .ex1 {
+            position: absolute;
+            width: 300px;
+            height: 60px;
+            left: 900px;
+            top: 450px;
+            text-align: center;
+
+            font-style: normal;
+            font-weight: 400;
+            font-size: 50px;
+            line-height: 60px;
+
+            background: #FFFFFF;
+            border: 8px solid rgba(230, 208, 14, 0.82);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+        }
+
+        .ex2 {
+            position: absolute;
+            width: 500px;
+            height: 60px;
+            left: 800px;
+            top: 550px;
+            background: #FFEB85;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+
+            text-align: center;
+
+            font-style: normal;
+            font-weight: 400;
+            font-size: 50px;
+            line-height: 60px;
+        }
+
+        .ex3 {
+            position: absolute;
+            width: 123px;
+            height: 16px;
+            left: 1180px;
+            top: 565px;
+
+            font-family: 'Noto Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 30px;
+            line-height: 16px;
+
+            color: #FF0000;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#">달려라, 달구벌</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">버스정보조회</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/nonreserve">버스선택</a></li>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-dark" type="submit">
+                        <a href="/main/login">Login</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Header-->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">달려라, 달구벌</h1>
+                <p class="lead fw-normal text-white-50 mb-0">버스 예약 시스템</p>
+            </div>
+        </div>
+    </header>
+    <!-- Section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5">
+            {% for index in range (0,size)%}
+            <strong>{{data[index]['이름']}} {{data[index]['방면']}} 정방향</strong></br>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for key,value in buscollect[index].items() %}
+                {% if key == '정방향' %}
+                {% for item in value['노선'] %}
+                <li>{{ item }}</li>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+            {% for index in range (0,size)%}
+            <strong>{{data[index]['이름']}} {{data[index]['방면']}} 역방향</strong></br>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for key,value in buscollect[index].items() %}
+                {% if key == '역방향' %}
+                {% for item in value['노선'] %}
+                <li>{{ item }}</li>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <section class="py-5">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <form method="POST" action="/nonbus_watch" autocomplete="off">
+                    {% for index in range (0,1)%}
+                    <input type="hidden" name="bus_name" value="{{data[index]['이름']}}">
+                    </input>
+                    <input type="hidden" name="bus_forward" value="{{data[index]['방면']}}">
+                    </input>
+                    {% endfor %}
+                    <select name="bus_nf" id="bus_nf">
+                        <option value=""></option>
+                        {% for index in range (0,size)%}
+                        <option value="{{data[index]['이름']}} {{data[index]['방면']}}">{{data[index]['이름']}}-{{data[index]['방면']}}</option>
+                        {% endfor %}
+                    </select>
+                    </br>
+                    <strong>방향</strong>
+                    <select name="forward" id="forward">
+                        <option value=""></option>
+                        <option value="1">정방향</option>
+                        <option value="0">역방향</option>
+                    </select>
+                    </br>
+                    <strong>출발지</strong>
+                    <input type="text" name="startStation" id="startStation">
+                    </br>
+                    <strong>도착지</strong>
+                    <input type="text" name="endStation" id="endStation">
+                    </br>
+                    <button type="submit">버스 확인하기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

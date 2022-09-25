@@ -10,7 +10,6 @@ const server = app.listen(PORT, function(){
  console.log("Listening port "+PORT)
 })
 
-app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())

@@ -286,7 +286,12 @@ module.exports = {
         }
 
         const buslist=[]
-        const result = {}
+        const result = {
+          이름: data.이름,
+          방면: data.방면,
+          버스id: data.버스id,
+          방향: data.방향
+        }
         //station, interval, wait
         $("table").each(function(){
           const col3 = []
@@ -304,10 +309,6 @@ module.exports = {
             }
           if (Object.keys(res).length!=0 && res.버스번호.includes('(')){
               {buslist.push(res)}
-              result.이름 = data.이름,
-              result.방면= data.방면,
-              result.버스id= data.버스id,
-              result.방향= data.방향
           }
         })
 

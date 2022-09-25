@@ -47,11 +47,16 @@ def check_date(element):
 
 # 예약내역 불러오기
 def return_reservation(user_id, user_pw):
+    result = []
     search = col_reserve.find({'user_id': user_id, 'user_pw': user_pw})
     for i in search:
         if (~check_date(i)):
             i['reserve_vaild'] = False
-
+            col_reserve.delete_one({'_id': i['_id']})
+            col_reserve.insert_one(i)
+        if (i['reserve_vaild']):
+            result.append(i)
+    return result
 
 # DB doc -> 도착까지 남은 시간(1시간 이내), 도착 정보 반환
 def return_remain_time(element):
@@ -87,21 +92,6 @@ def return_remain_time_id(bus_id, BS_on):
         return str(gap) + "분(" + str_time + ")"
     else:
         return str_time
-    
-
-
-# 예약내역 불러오기
-def return_reservation(user_id, user_pw):
-    search = col_reserve.find({'user_id': user_id, 'user_pw': user_pw})
-    result = []
-    for i in search:
-        if (~check_date(i)):
-            i['reserve_vaild'] = False
-            col_reserve.delete_one({'_id': i['_id']})
-            col_reserve.insert_one(i)
-        if (i['reserve_vaild']):
-            result.append(i)
-    return result 
 
 
 # 예약 취소

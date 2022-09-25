@@ -1,32 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>달려라, 달구벌</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme css (includes Bootstrap)-->
-    <link rel="stylesheet" href="../static/styles.css">
+        <meta name="author" content="" />
+        <title>달려라, 달구벌</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme css (includes Bootstrap)-->
+         <link rel="stylesheet" href="../static/styles.css">
+         <style>
+            .background {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100vh;
+              background-color: rgba(0, 0, 0, 0.3);
+              z-index: 1000;
+      
+              /* 숨기기 */
+              z-index: -1;
+              opacity: 0;
+            }
+      
+            .show {
+              opacity: 1;
+              z-index: 1000;
+              transition: all 0.5s;
+            }
+      
+            .window {
+              position: relative;
+              width: 100%;
+              height: 100%;
+            }
+      
+            .popup {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background-color: #ffffff;
+              box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+      
+              /* 임시 지정 */
+              width: 300px;
+              height: 300px;
+      
+              /* 초기에 약간 아래에 배치 */
+              transform: translate(-50%, -40%);
+            }
+      
+            .show .popup {
+              transform: translate(-50%, -50%);
+              transition: all 0.5s;
+            }
+            .contents {
+          width: 300px;
+          height: 300px;
+          text-align: center;
+          line-height: 150px;
+          color: #444;
+          background: #fff;
+          cursor: pointer;
+      }
+          </style>
+      
 </head>
-
 <body>
-    <!-- Navigation-->
+   <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="#!">달려라, 달구벌</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">버스정보조회</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/reserve">버스선택</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/select">버스선택</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/view_reservation">예약 조회</a></li>
                 </ul>
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="submit" href="login/">
@@ -49,7 +104,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     선텍내역확인하기
-                    <p>{{ bus_id }}</p>
+                    <p>{{ bus_id }}(저상)</p>
                     <p>{{ bs_on }}</p>
                     <p>{{ bs_off }}</p>
                 </div>

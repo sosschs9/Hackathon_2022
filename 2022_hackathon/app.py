@@ -1,5 +1,6 @@
 import requests, json
 from flask import Flask, render_template, request
+from reserve_bus import *
 import time
 
 app = Flask(__name__)
@@ -68,7 +69,7 @@ def nonbus_watch():
 def nonbus_select_check():
     if request.method == 'POST':
         bus_id = request.form['bus_id']
-        
+
         fp = open("cur_info.txt", "r")
         bus_name = fp.readline().strip('\n')
         bus_forward = fp.readline().strip('\n')

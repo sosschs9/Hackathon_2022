@@ -1,50 +1,32 @@
 <!DOCTYPE html>
-<html lang="ko">
-
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>달려라, 달구벌</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme css (includes Bootstrap)-->
-    <link rel="stylesheet" href="../../static/styles.css">
-    <style>
-        .search {
-            position: relative;
-            width: 300%;
-        }
-
-        input {
-            width: 100%;
-            border: 1px solid #bbb;
-            border-radius: 8px;
-            padding: 20px 40px;
-            font-size: 30px;
-        }
-    </style>
+        <meta name="author" content="" />
+        <title>달려라, 달구벌</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme css (includes Bootstrap)-->
+         <link rel="stylesheet" href="../static/styles.css">
 </head>
-
 <body>
-    <!-- Navigation-->
+   <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#">달려라, 달구벌</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <a class="navbar-brand" href="#!">달려라, 달구벌</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">버스정보조회</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/nonreserve">버스선택</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/select">버스선택</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/view_reservation">예약 조회</a></li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
-                        <a href="/main/login">Login</a>
+                    <button class="btn btn-outline-dark" type="submit" href="login/">
                     </button>
                 </form>
             </div>
@@ -70,7 +52,7 @@
                         <p>버스 노선을 입력해주세요</p>
                         <input type="text" id="nonreserve_route" name="nonreserve_route">
                         </div>
-                        <div class="row gx-6 gx-lg-6 row-cols-3  justify-content-center">
+                        <div class="row gx-6 gx-lg-6 row-cols-2  justify-content-center">
                         <button type="submit" class="btn btn-primary">버스 노선 검색하기</button>
                         </div>
                     </form>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>회원 예약 정보 출력</h3>
+{{ user_id }}님의 예약정보입니다. </br>
+{% for data in reservation_list %}
+    {{ data['route'] }} </br>
+    {{ data['bus_id'] }} </br>
+    {{ data['BS_on'] }} </br>
+    {{ data['BS_off'] }} </br>
+    {{ data['seat'] }} </br>
+    {{ data['year'] }}-{{ data['month'] }}-{{ data['day'] }} {{ data['hour'] }}:{{ data['min'] }}
+{% endfor %}
+
+<form method="post" action="/delete_reservation">
+
+</form>
+
+</body>
+</html>

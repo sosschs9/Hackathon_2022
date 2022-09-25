@@ -45,14 +45,25 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                  선텍내역확인하기
+                    {{ bs_on }}
+                    {{ bs_off }}
+                    {{ route }}
+                    {{ forward }}
+                    {{ bus_id }}
+                    {{ seat }}
                 </div>
             </div>
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <form method="POST" action="bus_reserve_seat">
+                    <form method="POST" action="/bus_reserve_seat">
                         <!-- 회원 정보 입력 -->
                         <input type="text" name="username" id="username">
                         <input type="text" name="password" id="password">
+                        <input type="hidden" name="bs_on" value="{{ bs_on }}">
+                        <input type="hidden" name="bs_off" value="{{ bs_off }}">
+                        <input type="hidden" name="bus_id" value="{{ bus_id }}">
+                        <input type="hidden" name="seat" value="{{ seat }}">
+
                         <button type="submit">예약하기</button>
                     </form>
                 </div>

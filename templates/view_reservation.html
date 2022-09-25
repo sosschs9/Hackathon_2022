@@ -5,6 +5,17 @@
     <title>Title</title>
 </head>
 <body>
+<h3>예약 조회</h3>
+<form method="POST" action="/view_reservation">
+    회원 아이디를 입력해주세요
+    <input type="text" name="user_id" id="user_id">
+    회원 비밀번호를 입력하세요
+    <input type="text" name="user_pw" id="user_pw">
+    <button type="submit">조회하기</button>
+</form>
 
+{% if correct == False %}
+    <p>아이디와 비밀번호가 일치하지 않습니다.</p>
+{% endif %}
 </body>
 </html>

@@ -41,7 +41,7 @@
 					<section id="banner" class="style2">
 						<div class="inner">
 							<span class="image">
-								<img src="../static/images/ReservationBus_Seat.jpg" alt="" /><!-- 이미지 넣기  -->
+								<img src="../static/images/pic02.jpg" alt="" /><!-- 이미지 넣기  -->
 							</span>
 							<header class="major">
 								<h1>버스 예약 시스템</h1>
@@ -56,25 +56,25 @@
 		<div id="main" class="alt">
             <section id="one">
                 <div class="inner">
-                    <img src="images/pic06.jpg">
+                    <img src="../static/images/ReserveBus_Seat.jpg" alt="" />
                     <br/>
                     <br/>
                     <br/>
                     <h2>좌석 선택</h2>
-                        <form method="post" action="#">
+                        <form method="post" action="/bus_select_check">
                             <div class="fields">
                                 <div class="field half">
                                     <!-- 좌석 번호 선택하는거 -->
-                                    <select name="demo-category" id="demo-category">
-                                                               {% for index in range(0,26) %}
-                        {% if seat_list[index] == True %}
-                        <option value="{{ index+1 }}">{{ index+1 }}</option>
-                        {% endif %}
-                        {% endfor %}
+                                    <select name="seat_name" id="seat_name">
+                                        {% for index in range(0,26) %}
+                                            {% if seat_list[index] == True %}
+                                            <option value="{{ index+1 }}">{{ index+1 }}</option>
+                                            {% endif %}
+                                        {% endfor %}
             <!--  여기에 좌석번호 --></select><br/>
                                 </div>
                                 <div class="field half">
-                                    <a href="#" class="button">해당 좌석 예약하기</a>
+                                    <button type="submit" class="button">좌석 예약하기</button>
                                 </div>
                             </div>
                         </form>
@@ -93,48 +93,15 @@
 					</ul>
 				</div>
 			</footer>
+        </div>
 
         <!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="../static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="../static/assets/js/browser.min.js"></script>
+			<script src="../static/assets/js/breakpoints.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<script src="../static/assets/js/main.js"></script>
     </body>
 </html>
-
-
-   <section class="py-5">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <img src="../static/images/ReserveBus_Seat.jpg">
-            </div>
-        </div>
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <div>예약 가능한 좌석 리스트 출력</div>
-                {% for index in range(0,26) %}
-                {% if seat_list[index] == True %}
-                <li>{{ index + 1 }}</li>
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <form method="POST" action="/bus_select_check">
-                    <select name="seat_name" id="seat_name">
-                        {% for index in range(0,26) %}
-                        {% if seat_list[index] == True %}
-                        <option value="{{ index+1 }}">{{ index+1 }}</option>
-                        {% endif %}
-                        {% endfor %}
-                    </select>
-
-                    <button type="submit">좌석 예약하기</button>
-                </form>
-            </div>
-        </div>
-    </section>

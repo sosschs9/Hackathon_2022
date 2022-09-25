@@ -24,6 +24,12 @@ def return_all_route_list():
 # 유효한 시간인지 확인
 def check_date(element):
     today = datetime.now()
+    # print(element['year'], int(today.strftime('%y')))
+    # print(element['month'], int(today.strftime('%m')))
+    # print(element['day'], int(today.strftime('%d')))
+    # print(element['hour'], int(today.strftime('%H')))
+    # print(element['min'], int(today.strftime('%M')))
+
     if (element["year"] < 2000+int(today.strftime('%y'))):
         return False
     if (element['year'] > 2000+int(today.strftime('%y'))):
@@ -40,7 +46,7 @@ def check_date(element):
         return False
     if (element['hour'] > int(today.strftime('%H'))):
         return True
-    if (element['min'] > int(today.strftime('%M'))):
+    if (element['min'] < int(today.strftime('%M'))):
         return False
     return True
 
@@ -52,11 +58,16 @@ def return_reservation(user_id, user_pw):
     search = col_reserve.find({'user_id': user_id, 'user_pw': user_pw})
     for i in search:
         flag = True
-        if (check_date(i) == False):
-            i['reserve_vaild'] = False
+        if (i['reserve_valid'] == True and check_date(i) == False):
+            change = {'_id':i['_id'], 'reserve_valid': False, 'user_id': i['user_id'], 'user_pw': i['user_pw'], 'route': i['route'], 'bus_id': i['bus_id'],
+               'BS_on': i['BS_on'], 'BS_off': i['BS_off'], 'seat': i['seat'],
+               'year': i['year'], 'month': i['month'], 'day': i['day'],
+               'hour': i['hour'], 'min': i['min']}
             col_reserve.delete_one({'_id': i['_id']})
-            col_reserve.insert_one(i)
-        result.append(i)
+            col_reserve.insert_one(change)
+            result.append(change)
+        else:
+            result.append(i)
     
     if(flag):
         return result

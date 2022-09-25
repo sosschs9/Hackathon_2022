@@ -53,7 +53,7 @@ def return_reservation(user_id, user_pw):
             i['reserve_vaild'] = False
 
 
-# 도착까지 남은 시간(1시간 이내), 도착 정보 반환
+# DB doc -> 도착까지 남은 시간(1시간 이내), 도착 정보 반환
 def return_remain_time(element):
     today = datetime.now()
     # print(element)
@@ -69,6 +69,25 @@ def return_remain_time(element):
         return str(gap) + "분(" + str_time + ")"
     else:
         return str_time
+
+# bus_id -> 도착까지 남은 시간(1시간 이내), 도착 정보 반환
+def return_remain_time_id(bus_id, BS_on):
+    element = col_bus.find_one({"bus_id":bus_id, "BS_off":BS_on})
+    today = datetime.now()
+    # print(element)
+    str_time = str(element['hour']) + ":" + str(element['min']) + " 도착"
+    if (element['year'] != today.year):
+        return str_time
+    if (element['month'] != today.month):
+        return str_time
+    if (element['day'] != today.day):
+        return str_time
+    gap = element['hour'] * 60 + element['min'] - (int(today.strftime('%H')) * 60 + int(today.strftime('%M')))
+    if (gap < 60):
+        return str(gap) + "분(" + str_time + ")"
+    else:
+        return str_time
+    
 
 
 # 예약내역 불러오기

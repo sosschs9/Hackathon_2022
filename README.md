@@ -174,4 +174,4 @@ https://youtu.be/fFwKoqUyHWw 예약 관련 화면 수정 후 영상
 5. 확인 후 기사님께 전송하는 '예약하기' 버튼 누르기
 6. 기사님께 전송 완료
 
-(hyegoooong, jaehyeon, main branch 봐주시면 되겠습니다.)
+(hyegoooong, jaehyeon, main(last commit) branch 봐주시면 되겠습니다.)

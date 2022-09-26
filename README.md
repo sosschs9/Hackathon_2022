@@ -83,7 +83,7 @@
 * nodejs, flask, django, js, mongodb *
 
 ### 1. CI/CD
-* 저희가 새롭게 구축한 3개의 노선들의 정류장과 고유 ID, 시간, 배차간격 등의 모든 데이터를 MongoDB에 넣어 저희만의 새로운 노선 데이터베이스를 구축합니다. 
+* 저희가 대구 버스에 관한 공공데이터를 분석하여 주요 장소를 지나가도록 새롭게 구축한 3개의 노선의 정류장과 고유 ID, 시간, 배차간격 등의 모든 데이터를 MongoDB에 넣어 저희만의 새로운 노선 데이터베이스를 구축합니다. 
 * 비공식 API에서 불러온 저상버스와 일반 노선의 버스 정류장, 버스번호, ID, 배차간격 등의 시간 등 모든 정보를 호출합니다. 저희가 이용하는 호출한 데이터의 목록은 다음과 같습니다. 
 - 버스 고유id => 버스 이름, 버스 노선, 버스 현재 위치, 차 번호(저상)
 - 버스 이름 => 버스 이름, 버스 고유 id, 버스 방면
@@ -153,8 +153,8 @@ pip install -r requirements
 
 
 ## 9. 시연 영상
-https://youtu.be/JtuXjqsvJPQ
-https://youtu.be/fFwKoqUyHWw
+https://youtu.be/JtuXjqsvJPQ 전체 영상
+https://youtu.be/fFwKoqUyHWw 예약 관련 화면 수정 후 영상
 
 <타임 스탬프>
 (mongoDB Atlas - 7번 참조)
@@ -174,4 +174,4 @@ https://youtu.be/fFwKoqUyHWw
 5. 확인 후 기사님께 전송하는 '예약하기' 버튼 누르기
 6. 기사님께 전송 완료
 
-(hyegoooong, jaehyun branch 참고)
+(hyegoooong, jaehyeon, main branch 봐주시면 되겠습니다.)

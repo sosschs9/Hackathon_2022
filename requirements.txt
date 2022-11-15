@@ -1,6 +1,5 @@
 dnspython==2.2.1
 pymongo==4.2.0
 schedule==1.1.0
-flask==1.1.2
-
-#node.js는 인터넷에서 다운받으시길 바랍니다
+flask==2.1.0
+requests==2.28.1
